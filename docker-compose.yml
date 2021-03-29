@@ -3,6 +3,7 @@ version: "3.9"
 services:
   db:
     image: postgres
+    restart: always
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
@@ -11,6 +12,7 @@ services:
   web:
     build: .
     command: python3 main.py
+    restart: always
     environment:
       - DB_URL=postgresql+asyncpg://postgres:qwerty@db:5432/postgres
       - DB_SYNC_URL=postgresql://postgres:qwerty@db:5432/postgres
